@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aegis Custom Styles */
+@layer base {
+  body {
+    @apply bg-aegis-darker text-gray-100;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-aegis-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-aegis-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}
+
+@layer components {
+  /* Card styles */
+  .card {
+    @apply bg-aegis-card border border-aegis-border rounded-xl p-6;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:border-aegis-primary/50 hover:shadow-lg hover:shadow-aegis-primary/10;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-aegis-primary text-white hover:bg-blue-600 focus:ring-2 focus:ring-aegis-primary/50;
+  }
+
+  .btn-secondary {
+    @apply btn bg-aegis-card border border-aegis-border text-gray-300 hover:bg-aegis-border hover:text-white;
+  }
+
+  .btn-danger {
+    @apply btn bg-aegis-danger text-white hover:bg-red-600;
+  }
+
+  .btn-ghost {
+    @apply btn text-gray-400 hover:text-white hover:bg-aegis-card;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-2 bg-aegis-dark border border-aegis-border rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:border-aegis-primary focus:ring-1 focus:ring-aegis-primary;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-aegis-success/20 text-aegis-success;
+  }
+
+  .badge-warning {
+    @apply badge bg-aegis-warning/20 text-aegis-warning;
+  }
+
+  .badge-danger {
+    @apply badge bg-aegis-danger/20 text-aegis-danger;
+  }
+
+  .badge-critical {
+    @apply badge bg-aegis-critical/20 text-aegis-critical;
+  }
+
+  .badge-info {
+    @apply badge bg-aegis-primary/20 text-aegis-primary;
+  }
+
+  /* Score ring animation */
+  .score-ring {
+    @apply relative inline-flex items-center justify-center;
+  }
+
+  .score-ring::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: conic-gradient(
+      var(--score-color) calc(var(--score) * 1%),
+      transparent calc(var(--score) * 1%)
+    );
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .glow-danger {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-aegis-primary to-aegis-secondary;
+  }
+
+  /* Background patterns */
+  .bg-grid {
+    background-image: linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
